@@ -1,0 +1,102 @@
+
+.main-block {
+    margin-top: 80px;
+}
+
+/*блок подробностей о фильме*/
+.detail-movie {
+    padding-left: 50px;
+}
+
+/*название фильма*/
+.detail-movie .tittle-movie h2 {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+/*оригинальное название*/
+.detail-movie .origin-tittle-movie h4 {
+    margin-top: 5px;
+    margin-bottom: 17px;
+    color: gray;
+}
+
+/*заголовок русский*/
+.detail-movie .russian-tittle {
+    padding-left: 0;
+}
+
+/*кнопка просмотра трейлера*/
+#review-trailer-btn {
+    width: 200px;
+    height: 40px;
+}
+
+/*кнопка просмотра фильма*/
+#review-movie-btn {
+    width: 200px;
+    height: 40px;
+}
+
+/*кнопки просмотра */
+.review-movie .center-block {
+    padding: 20px 0;
+}
+
+/*описание филтма*/
+.detail-movie  .description {
+    font-size: 15px;
+}
+
+/*год выпуска*/
+.year-movie {
+    font-size: 20px;
+}
+
+
+.main-block .genre {
+    padding-right: 10px;
+}
+
+.main-block .country {
+    padding-left: 10px;
+}
+
+.bs-callout {
+    padding: 5px 20px;
+    margin: 5px 0;
+    border-left: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+
+.bs-callout-info {
+    border-left-color: #5bc0de;
+    background-color: #b3dbd2;
+}
+
+.modal .modal-content {
+    background-color: #000000;
+}
+
+.modal .modal-content .modal-header {
+    border-bottom: none;
+    color: #ffffff;
+}
+
+.modal .modal-content .modal-header .modal-title {
+    color: #ffffff;
+    text-align: center
+}
+
+.modal .modal-content  .modal-body {
+    padding: 0 15px 15px 15px;
+}
+
+.disqus {
+    margin-top: 70px;
+}

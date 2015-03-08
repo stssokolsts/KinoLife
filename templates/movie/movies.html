@@ -1,0 +1,24 @@
+{% extends "movie/movies_base.html" %}
+{% load staticfiles %}
+{% block  other_css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/movies.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/movies_base.css">
+{% endblock %}
+{% block movies_title %}
+    Мои фильмы
+{% endblock %}
+{% block movies_sub_title %}
+    {{ movies_name_category }}
+{% endblock %}
+{% block movies_content %}
+    {% include "tags/movie_thumb.html" %}
+{% endblock %}
+{% block info_block %}
+    <div class="info-block">
+        <img src="{% static "img/other/128 (1).png" %}" class="responsive-img info-img">
+    </div>
+    <div class="info-txt">
+        Что у нас здесь
+    </div>
+    <p>Теперь, возможно, ты даже будешь запоминать просмотренные тобой фильмы ) </p>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "movie/movies_base.html" %}
+{% load staticfiles %}
+{% load movie_tags %}
+{% block  other_css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/movies_base.css">
+{% endblock %}
+{% block movies_title %}
+    Мои фильмы
+{% endblock %}
+{% block movies_sub_title %}
+    {{ movies_name_category }}
+{% endblock %}
+{% block movies_content %}
+    <h4>Специально для Аньки - Анютковны</h4>
+    <p>Ты не хочешь идти в "Кинопоиск" - Кинопоиск идёт к тебе!</p>
+    <p>В качестве презента к 8 марта, дарю тебе твой личный сайт с фильмами.</p>
+    <p>Что за сайт и зачем он нуже:</p>
+    <ul>
+ <li>Первый пункт</li>
+ <li>Второй пункт</li>
+ <li>Третий пункт</li>
+</ul>
+    <div class="row" style="margin-top: 60px; padding-right: 30px">
+    <div class="col-xs-12">
+        {% load disqus_tags %}
+        {% disqus_show_comments %}
+    </div>
+    </div>
+{% endblock %}
+{% block info_block %}
+    <div class="info-block">
+        <img src="{% static "img/other/love.png" %}" class="responsive-img info-img">
+    </div>
+    <div class="info-txt">
+        Что у нас здесь
+    </div>
+    <p>Здесь ты найдешь фильмы, которые захотела посмотреть, просмотренное или понравившееся кино </p>
+{% endblock %}

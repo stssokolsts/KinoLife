@@ -1,0 +1,31 @@
+{% extends "movie/movies_base.html" %}
+{% load staticfiles %}
+{% block  other_css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/search.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/movies_base.css">
+{% endblock %}
+{% block movies_title %}
+    Поиск
+{% endblock %}
+{% block movies_sub_title %}
+    Фильмы, подобранные специально для тебя :)
+{% endblock %}
+{% block movies_content %}
+    {% if movies %}
+        {% include "tags/movie_thumb.html" %}
+    {% else %}
+        <div class="col-xs-12">
+            <p>Почему-то тут посто</p>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block info_block %}
+    <div class="info-block">
+        <img src="{% static "img/other/1.png" %}" class="responsive-img info-img">
+    </div>
+    <div class="info-txt">
+        Поиск
+    </div>
+    <p>Фильмы в основном подбираются рандомно, с учетом, разумеется, твоих пожелашек.
+        Уже просмотренные или неинтересные фильмы открывай, нажимай "смотрела" - они больше в поиске не появятся</p>
+{% endblock %}

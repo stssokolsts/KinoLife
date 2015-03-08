@@ -1,0 +1,62 @@
+
+
+.sidebar-module-inset {
+    padding: 15px;
+    background-color: #C7D5E2;;
+    border-radius: 4px;
+}
+
+.blog-header {
+padding-top: 20px;
+padding-bottom: 20px;
+    padding-left: 40px;
+}
+
+.blog-title {
+margin-top: 30px;
+margin-bottom: 0;
+font-size: 60px;
+font-weight: normal;
+}
+
+.blog-description {
+font-size: 20px;
+color: #999;
+}
+
+.sidebar-movie {
+    background-color: #C7D5E2;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+.sidebar-movie li {
+    font-size: 17px;
+    padding: 5px 0;
+}
+
+.info-block {
+    width: 34%;
+    float: left
+}
+
+.info-block .info-img {
+    max-width: 70px;
+}
+
+.sidebar-module .info-txt {
+    font-size: 20px;
+    width: 66%;
+    float: left;
+    padding-bottom: 5px
+}
+
+.movie-name {
+    text-align: center;
+    padding: 0 4px;
+}
+
+.movie-thumb {
+    padding-bottom: 30px;
+    height: 367px;
+}

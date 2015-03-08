@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load movie_tags %}
+{% block  other_css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/movies_base.css">
+{% endblock %}
+{% block site_wrapper %}
+    <div class="container">
+        <div class="row">
+            <div class="blog-header">
+                <h1 class="blog-title">{% block movies_title %}{% endblock %}</h1>
+                <p class="lead blog-description">{% block movies_sub_title %}{% endblock %}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-9">
+                {% block movies_content %}{% endblock %}
+            </div>
+            <div class="col-xs-3">
+                <div class="row">
+                <div class="sidebar-module sidebar-module-inset">
+                    <div class="">
+                    </div>
+                    <div class="" style="">
+                        {% block info_block %}{% endblock %}
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="sidebar-module sidebar-movie">
+                        <h3>Фильмы</h3>
+                        <ol class="list-unstyled">
+                          <li><a href="{% url 'show_movies' 2 %}">Надо просмотреть</a> ({% count_movie 2 %})</li>
+                          <li><a href="{% url 'show_movies' 3 %}">Избранное </a> ({% count_movie 3 %})</li>
+                          <li><a href="#"></a> Посмотреть вместе (2)</li>
+                          <li><a href="{% url 'show_movies' 1 %}">Просмотренные</a> ({% count_movie 1 %}) </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

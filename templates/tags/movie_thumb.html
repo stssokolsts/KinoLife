@@ -1,0 +1,17 @@
+{% load staticfiles %}
+{% for m in movies %}
+    <div class="col-xs-3 movie-thumb" >
+        <a href="{{ m.get_absolute_url }}" class="">
+            <img class="img-responsive" src="{% static m.poster %}">
+        </a>
+
+        <h4 class="movie-name">
+            <a href="{{ m.get_absolute_url }}" class="">
+            {{ m.title_russian }}
+                </a><span style="width: 40px; text-align: center">
+            {% comment %}<a href="#" style="color:rgb(78, 128, 122);">(X)</a>{% endcomment %}
+            </span>
+        </h4>
+    </div>
+
+{% endfor %}

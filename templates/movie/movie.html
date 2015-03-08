@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block other_css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/movie.css">
+{% endblock %}
+{% block other_scripts %}
+    <script src="{{ STATIC_URL }}js/movies.js"></script>
+{% endblock %}
+{% block site_wrapper %}
+    <div class="container">
+        <div class="row">
+
+        </div>
+        <div class="row main-block">
+            <div class="col-md-3 col-xs-3">
+                <div class="">
+                    <img src="{% static movie.poster %}" class="img-responsive">
+                </div>
+            </div>
+            <div class="col-xs-9 detail-movie">
+                <div class="row tittle-movie">
+                    <div class="col-xs-7 russian-tittle">
+                        <h2>
+                            {{ movie.title_russian }}
+                            <span class="year-movie"> ({{year}}{% if type %} - {{ type }} {% endif %})</span>
+                        </h2>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class=" pull-right">
+                            <form method="post" action="." class="cart add_form" id="">
+	                            {% csrf_token %}
+                                <button value="2" id="show_future_{{ movie_id }}" name="{{ movie.movie_id }}"
+                                        class="btn btn-warning btn-do">Надо посмотреть
+                                    <i class="glyphicon glyphicon-film icon-white"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class=" pull-right">
+                            <form method="post" action="." class="cart add_form" id="">
+	                            {% csrf_token %}
+			                    {% comment %}<input id="id_product_slug" name="product_slug" value="{{ p.slug}}" type="hidden">{% endcomment %}
+			                    <button value="1" name = "{{ movie.movie_id }}" class="btn btn-danger btn-do"
+                                        id="remove_{{ movie_id }}">Смотрела
+                                    <i class="glyphicon glyphicon-remove icon-white"></i>
+                                </button>
+							</form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row origin-tittle-movie">
+                    <h4>
+                        {{ movie.title_original }}
+                    </h4>
+                </div>
+                <div class="row">
+                    <p>
+                        <span class="genre">
+                            <b>
+                                {% if movie.genre.count == 1 %}
+                                    Жанр:
+                                {% else %}
+                                    Жанры:
+                                {% endif %}
+                            </b>
+                            {{ genre }}
+                        </span><b>|</b>
+                        <span class="country">
+                        {{ country }}</span>
+
+                    </p>
+                </div>
+                <div class="row">
+                    <p>
+                        <b>
+                            {% if movie.director.count == 1 %}
+                                Режисер:
+                            {% else %}
+                                Режисеры:
+                            {% endif %}
+                        </b>
+                        {% for d in movie.director.all %}
+                            {{ d.name }}
+                        {% endfor %}
+                    </p>
+                </div>
+                <div class="row">
+                    <p><b>Актеры и роли: </b>
+                        {{ cast }}
+                    </p>
+                </div>
+                <div class="row">
+                    <p><b>Продолжительность:</b> {{ movie.runtime }} мин</p>
+                </div>
+                <div class="row description ">
+                    <div class="bs-callout bs-callout-success">
+                      <p>{{ movie.description }}</p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <p></p>
+                </div>
+                <div class="row review-movie">
+                    {% if not movie.trailer == "" %}
+                        <div class="col-xs-4">
+                        <div class="center-block">
+                           <button class="btn btn-info" id = "review-trailer-btn" data-toggle="modal" data-target="#trailer-online">
+                                Смотреть трейлер
+                               <i class="glyphicon glyphicon-facetime-video icon-white"></i>
+                            </button>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if not movie.url == "" %}
+                        <div class="col-xs-4">
+                            <div class="center-block">
+                                <button class="btn btn-success" data-toggle="modal" data-target="#movie-online" id = "review-movie-btn">
+                                        Смотреть онлайн
+                                       <i class="glyphicon glyphicon glyphicon-play icon-white"></i>
+                                </button>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="col-xs-12 disqus">
+                        {% load disqus_tags %}
+                        {% disqus_show_comments %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="trailer-online" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
+         <h3 class="modal-title center-block" id="myModalLabel">{{ movie.title_russian }}</h3>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="400" src="{{ youtube_url }}" frameborder="0" allowfullscreen></iframe>      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="movie-online" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
+         <h3 class="modal-title center-block" id="myModalLabel">{{ movie.title_russian }}</h3>
+      </div>
+      <div class="modal-body">
+        <iframe width="100%" height="400" src="{{ movie.url }}" frameborder="0" allowfullscreen></iframe>     </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}
