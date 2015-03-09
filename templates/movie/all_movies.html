@@ -22,11 +22,11 @@
  <li>Онлайн просмотр - все понравившееся кино можешь смотреть прямо здесь!</li>
 </ul>
     <p>Надеюсь тебе понравится) с праздником, Анечка!</p>
-    <div class="row" style="margin-top: 60px; padding-right: 30px">
-    <div class="col-xs-12">
-        {% load disqus_tags %}
-        {% disqus_show_comments %}
-    </div>
+    <div class="row disq">
+        <div class="col-xs-12">
+            {% load disqus_tags %}
+            {% disqus_show_comments %}
+        </div>
     </div>
 {% endblock %}
 {% block info_block %}

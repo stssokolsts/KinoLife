@@ -5,16 +5,22 @@ from movie.cinemate import get_movie_by_id
 from movie.models import Genre
 
 
+RATING_MIN = 5
+
+VOTES_MIN = 300
+
+
 def set_search_movie():
     """Генерация подобранных фильмов"""
-    rating_min = 5
-    votes_min = 300
+    rating_min = RATING_MIN
+    votes_min = VOTES_MIN
     res = MovieBase.objects.filter(genre__name__exact = 'мелодрама')\
         .filter(genre__name__exact = 'комедия')\
         .filter(rating_k__gt = rating_min)\
         .exclude(state__exact = MovieBase.REMOVE)\
         .filter(votes_k__gt = votes_min).order_by('?')[:12]
     return res
+
 
 def search_by_name(list_movie):
     """Поиск по названию"""

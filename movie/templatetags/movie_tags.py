@@ -7,6 +7,5 @@ register = template.Library()
 
 @register.inclusion_tag("tags/count_movie.html")
 def count_movie(i):
-    print("i")
-    print(i)
+    """возвращает количество фильмов данной категории"""
     return {'count': movie.count_movie(int(i))}

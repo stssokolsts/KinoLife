@@ -1,7 +1,5 @@
 from KinoLife import settings
 
-#SOCIAL_PROVIDER = ""
-
 
 def Kinolife(request):
     """ context processor for the site templates """

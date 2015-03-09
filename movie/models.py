@@ -3,10 +3,9 @@ from django.db import models
 import datetime
 import requests
 import vk
+import re
 import urllib2, urlparse
 from KinoLife.settings import STATICFILES_DIRS
-
-
 
 
 class Person(models.Model):
@@ -18,12 +17,7 @@ class Person(models.Model):
         return unicode(self.name)
 
     def from_dict(self, dct):
-        """ Информация о персоне из словаря, возвращаемого API.
-        :param dct: словарь, возвращаемый API
-        :type dct: :py:class:`dict`
-        :return: персона
-        :rtype: :class:`.Person`
-        """
+        """ Информация о персоне из словаря, возвращаемого API."""
         self.person_id = dct.get('id') or dct.get('attrib').get('id')
         self.name = dct.get('name') or dct.get('value')
         self.photo = dct.get('url','photo')
@@ -31,6 +25,7 @@ class Person(models.Model):
 
 
 class Country(models.Model):
+    """Страна производительница фильма"""
     name = models.CharField(max_length=30)
 
     def from_dict(self, name):
@@ -42,14 +37,11 @@ class Country(models.Model):
 
 
 class Genre(models.Model):
+    """Жанр фильмов"""
     name = models.CharField(max_length=100)
 
     def __unicode__(self):
         return unicode(self.name)
-
-    #@models.permalink
-   # def get_absolute_url(self):
-       # return ('movies', (), { 'movie_slug': self.slug })
 
     def from_dict(self, name):
         self.name = name
@@ -57,6 +49,7 @@ class Genre(models.Model):
 
 
 class MovieBase(models.Model):
+    """Базовый класс фильмов"""
 
     REMOVE = 1
     SHOW_FUTURE = 2
@@ -68,8 +61,7 @@ class MovieBase(models.Model):
         (SHOW_FUTURE, 'Надо посмотреть'),
         (FAVORITE, 'Избранное'),
         (TOGETHER, 'Посмотреть вместе'))
-    #def __new__(cls, *args, **kwargs):
-        #new_class = super(MetaClass)
+
 
     movie_id = models.IntegerField(unique=True)  #+
     title = models.CharField(max_length=120)     #+
@@ -92,7 +84,6 @@ class MovieBase(models.Model):
 
     def __unicode__(self):
         return unicode(self.title_russian)
-    #state = models.CharField(max_length=)
 
 
     @models.permalink
@@ -100,12 +91,12 @@ class MovieBase(models.Model):
         return ('show_movie', (), { 'movie_id': self.movie_id })
 
 
-    #@classmethod
     def from_dict(self, dct):
         """ Получить информацию о фильме из словаря, возвращаемого API."""
         self.year = int(dct.get('year'))
         self.type = dct.get('type')
-        self.description = dct.get('description')
+        d = dct.get('description', '')
+        self.description = re.sub("смотрите на Cinemate.cc", "", d)
         self.trailer = dct.get('trailer','')
         self.movie_id = int(dct['url'].split('/')[-2])
         self.title_original = dct.get('title_original', '')
@@ -129,9 +120,6 @@ class MovieBase(models.Model):
             out.close()
             path = 'img\posters\\' + str(self.movie_id)  + '.jpg'
             self.poster = path
-        #смотрите на ...
-        #сериалы убрать
-        #админка
         self.save()
 
         country = dct.get('country',{}).get('name', []) #????

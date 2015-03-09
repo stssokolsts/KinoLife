@@ -8,9 +8,6 @@
 {% endblock %}
 {% block site_wrapper %}
     <div class="container">
-        <div class="row">
-
-        </div>
         <div class="row main-block">
             <div class="col-md-3 col-xs-3">
                 <div class="">
@@ -40,7 +37,6 @@
                         <div class=" pull-right">
                             <form method="post" action="." class="cart add_form" id="">
 	                            {% csrf_token %}
-			                    {% comment %}<input id="id_product_slug" name="product_slug" value="{{ p.slug}}" type="hidden">{% endcomment %}
 			                    <button value="1" name = "{{ movie.movie_id }}" class="btn btn-danger btn-do"
                                         id="remove_{{ movie_id }}">Смотрела
                                     <i class="glyphicon glyphicon-remove icon-white"></i>
@@ -52,7 +48,6 @@
                         <div class=" pull-right">
                             <form method="post" action="." class="cart fav_form" id="">
 	                            {% csrf_token %}
-			                    {% comment %}<input id="id_product_slug" name="product_slug" value="{{ p.slug}}" type="hidden">{% endcomment %}
 			                    <button value="3" name = "{{ movie.movie_id }}" class="btn btn-danger btn-do"
                                         id="add_fav_{{ movie_id }}"
                                         style="background-color: #ffff00; border-color: #D4D23A;">
@@ -111,7 +106,6 @@
                     <div class="bs-callout bs-callout-success">
                       <p>{{ movie.description }}</p>
                     </div>
-
                 </div>
                 <div class="row">
                     <p></p>
@@ -148,30 +142,30 @@
 
 <!-- Modal -->
 <div class="modal fade" id="trailer-online" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
-         <h3 class="modal-title center-block" id="myModalLabel">{{ movie.title_russian }}</h3>
-      </div>
-      <div class="modal-body">
-        <iframe width="100%" height="400" src="{{ youtube_url }}" frameborder="0" allowfullscreen></iframe>      </div>
-
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
+                 <h3 class="modal-title center-block" id="myModalLabel">{{ movie.title_russian }}</h3>
+            </div>
+            <div class="modal-body">
+                <iframe width="100%" height="400" src="{{ youtube_url }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <div class="modal fade" id="movie-online" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
-         <h3 class="modal-title center-block" id="myModalLabel">{{ movie.title_russian }}</h3>
-      </div>
-      <div class="modal-body">
-        <iframe width="100%" height="400" src="{{ movie.url }}" frameborder="0" allowfullscreen></iframe>     </div>
-
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
+                <h3 class="modal-title center-block" id="myModalLabel">{{ movie.title_russian }}</h3>
+            </div>
+            <div class="modal-body">
+                <iframe width="100%" height="400" src="{{ movie.url }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 {% endblock %}

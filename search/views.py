@@ -5,6 +5,7 @@ from search import search_by_name,set_search_movie
 
 
 def search(request, template_name="movie/search_result.html"):
+    """Поиск по названию"""
     q = request.GET.get('q', '')
     #cinemate.search(q.encode('utf-8'))
     movies = search_by_name(cinemate.search(q.encode('utf-8')))

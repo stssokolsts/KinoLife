@@ -98,15 +98,6 @@ STATICFILES_DIRS = (
 
 ACCESS_TOKEN = 'f86d862402070516f8314ff4331b9091938a5af88a556c913df1272173cf00c606d6d785368c57389cc03'
 
-from cinemate import Cinemate
-
-cin = Cinemate(
-    'sokolenysh',
-    '9CfynfAt9',
-    'debc7a4f8fd7511a3f16f22b143bd086111a7e82',
-    '198c65f8632903e86b10bfe8d936c2d7aa4a0560'
-)
-
 APIKEY = '198c65f8632903e86b10bfe8d936c2d7aa4a0560'
 
 TEMPLATE_DIRS = (
