@@ -11,5 +11,6 @@ urlpatterns = patterns('movie.views',
                            'show_movies'),
                        url(r'^movies/$', 'all_movies', {'template_name':'movie/all_movies.html'},
                            'show_all_movies'),
-
+                       url(r'^about', 'about', {'template_name':'about.html'},
+                           'about'),
 )

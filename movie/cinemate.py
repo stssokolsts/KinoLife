@@ -51,8 +51,10 @@ def search(q):
             print(len(req.json()['movie']))
             return req.json()['movie']
         else:
+            print(req.json())
             return []
     except requests.RequestException:
+        print("error")
         return []
 
 def search_favorite():

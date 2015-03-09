@@ -46,6 +46,7 @@ def get_access_token():
 
 def search(q, runtime, year=''):
     """ поиск фильма в вк учитывая год, длительность и название """
+    print("ok")
     url = URL_VK_MOVIE
     if not(runtime == 0):
         longer = (runtime-10)*60
@@ -98,6 +99,7 @@ def search(q, runtime, year=''):
                     else:
                         return ""
     except requests.RequestException:
+        print("error!!!")
         return ""
 
 

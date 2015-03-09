@@ -61,11 +61,13 @@ class MovieBase(models.Model):
     REMOVE = 1
     SHOW_FUTURE = 2
     FAVORITE = 3
+    TOGETHER = 4
 
     STATE_CHOICE = (
         (REMOVE, 'Просмотрено') ,
         (SHOW_FUTURE, 'Надо посмотреть'),
-        (FAVORITE, 'Избранное'))
+        (FAVORITE, 'Избранное'),
+        (TOGETHER, 'Посмотреть вместе'))
     #def __new__(cls, *args, **kwargs):
         #new_class = super(MetaClass)
 
@@ -121,6 +123,7 @@ class MovieBase(models.Model):
         if img:
             p = requests.get(img)
             path = 'static\img\posters\\' + str(self.movie_id)  + '.jpg'
+            #path = '/home/sokolenysh/KinoLife/static/img/posters/' + str(self.movie_id)  + '.jpg'
             out = open(path, "wb")
             out.write(p.content)
             out.close()

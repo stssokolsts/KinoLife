@@ -1,4 +1,24 @@
 {% extends "base.html" %}
-{% block site_wrapper %}
-    <div style="height: 3000px; background-color: transparent"></div>
+{% load staticfiles %}
+{% block other_css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/index.css">
+{% endblock %}
+{% block main_content %}
+    <!-- Navigation -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Анюточка</h1>
+                        <p class="intro-text">Поздравляю тебя с праздником весны!<br> Это мой подарочек.</p>
+                        <a href="{% url 'show_all_movies' %}" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
 {% endblock %}

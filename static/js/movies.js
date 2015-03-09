@@ -23,16 +23,20 @@ function do_movie() {
             else if (json.success == 'True')
             {
                 if (v == 1) {
-                    $("#remove_" + id).attr('disabled',true)
-                        .css({'background-color':'rgba(218, 76, 76, 0.55)'})
+                    $("#remove_" + id)
+                       .css({'background-color':'rgba(218, 76, 76, 0.55)'})
                        .html("Удалено!");
-                    $("#show_future_" + id).attr('disabled',true);
                 }
-                else if (v ==2 )
-                    $("#remove_" + id).attr('disabled',true);
-                    $("#show_future_" + id).attr('disabled',true)
-                        .css({'background-color':'#F0C486'})
+                else if (v == 2 )
+                {
+                    $("#show_future_" + id)
+                       .css({'background-color':'#F0C486'})
                        .html("Добавили!");
+                }
+                $("#remove_" + id).attr('disabled',true);
+                $("#show_future_" + id).attr('disabled',true);
+                $("#add_fav_" + id).attr('disabled',true);
+                $("#show_tog_" + id).attr('disabled',true);
             }
         },
         error: function(xhr, errmsg, err) {
