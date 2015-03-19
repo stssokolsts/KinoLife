@@ -115,9 +115,7 @@ DISQUS_WEBSITE_SHORTNAME = 'stssokolsts'
 
 
 SITE_NAME = "Kinolife"
-#expires_in=86400&user_id=26320727
-#http://api.vk.com/blank.html#
-# access_token=f86d862402070516f8314ff4331b9091938a5af88a556c913df1272173cf00c606d6d785368c57389cc03&expires_in=0&user_id=26320727
+
 
 import django.conf.global_settings as DEFAULT_SETTINGS
 

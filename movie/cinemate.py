@@ -109,14 +109,14 @@ def copy_base(y):
                         movie_id = l.get('id', 0)
                         try:
                             movie = MovieBase.objects.get(movie_id__exact= movie_id)
-                            print("Существует - " + movie.title_russian)
+                            print("Существует - " + movie.title_russian.encode('utf-8'))
                         except MovieBase.DoesNotExist:
                             movie_dct = get_movie_by_id(movie_id)
                             if (movie_dct):
                                 movie = MovieBase()
                                 movie.from_dict(dct = movie_dct)
                                 s+=1
-                                print("Скопировали - " + movie.title_russian)
+                                print("Скопировали - " + movie.title_russian.encode('utf-8'))
                                 print("фильмов де-факто - " + str(s))
                             else:
                                 movie = None
@@ -138,13 +138,13 @@ def copy_base(y):
                             movie_id = l.get('id', 0)
                             try:
                                 movie = MovieBase.objects.get(movie_id__exact= movie_id)
-                                print("Существует - " + movie.title_russian)
+                                print("Существует - " + movie.title_russian.encode('utf-8'))
                             except MovieBase.DoesNotExist:
                                 movie_dct = get_movie_by_id(movie_id)
                                 if (movie_dct):
                                     movie = MovieBase()
                                     movie.from_dict(dct = movie_dct)
-                                    print("Скопировали - " + movie.title_russian)
+                                    print("Скопировали - " + movie.title_russian.encode('utf-8'))
                                     s+=1
                                     print("фильмов де-факто - " + str(s))
                                 else:
